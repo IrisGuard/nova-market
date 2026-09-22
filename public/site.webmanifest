@@ -1,0 +1,13 @@
+{
+  "name": "Nova Market",
+  "short_name": "Nova Market",
+  "description": "The curated global marketplace — millions of products from trusted partners, in one place.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f7fb",
+  "theme_color": "#4f46e5",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

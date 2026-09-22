@@ -1,0 +1,10 @@
+INSERT INTO categories (id, name, slug, parent_id, sort) VALUES ('bags-shoes', 'Bags & Shoes', 'bags-shoes', NULL, 0);
+INSERT INTO categories (id, name, slug, parent_id, sort) VALUES ('babies-kids', 'Babies & Kids', 'babies-kids', NULL, 1);
+INSERT INTO categories (id, name, slug, parent_id, sort) VALUES ('home-garden', 'Home & Garden', 'home-garden', NULL, 2);
+INSERT INTO categories (id, name, slug, parent_id, sort) VALUES ('watches-jewelry', 'Watches & Jewelry', 'watches-jewelry', NULL, 3);
+INSERT INTO categories (id, name, slug, parent_id, sort) VALUES ('auto-moto', 'Auto & Moto', 'auto-moto', NULL, 4);
+INSERT INTO categories (id, name, slug, parent_id, sort) VALUES ('tv-audio-gaming', 'TV, Audio & Gaming', 'tv-audio-gaming', NULL, 5);
+INSERT INTO categories (id, name, slug, parent_id, sort) VALUES ('health-beauty', 'Health & Beauty', 'health-beauty', NULL, 6);
+INSERT INTO categories (id, name, slug, parent_id, sort) VALUES ('clothing', 'Clothing', 'clothing', NULL, 7);
+INSERT INTO categories (id, name, slug, parent_id, sort) VALUES ('sports', 'Sports & Outdoors', 'sports', NULL, 8);
+INSERT INTO categories (id, name, slug, parent_id, sort) VALUES ('electronics', 'Electronics', 'electronics', NULL, 9);

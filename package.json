@@ -1,0 +1,15 @@
+{
+  "name": "nova-market",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Nova Market — China-sourced product platform (NovaForge). Affiliate-first, dropshipping-ready.",
+  "scripts": {
+    "predev": "node scripts/generate-static-seo.mjs",
+    "prebuild": "node scripts/generate-static-seo.mjs",
+    "seo": "node scripts/generate-static-seo.mjs",
+    "build": "node scripts/generate-static-seo.mjs",
+    "deploy": "wrangler deploy"
+  },
+  "engines": { "node": ">=18" }
+}

@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "source": "badu.gr taxonomy (mapped to English) — expandable to AliExpress full category tree",
+  "categories": [
+    {
+      "id": "bags-shoes",
+      "name": "Bags & Shoes",
+      "slug": "bags-shoes",
+      "children": [
+        "womens-bags-shoes",
+        "mens-shoes-bags",
+        "baby-bags-backpacks",
+        "baby-equipment-bags"
+      ]
+    },
+    {
+      "id": "babies-kids",
+      "name": "Babies & Kids",
+      "slug": "babies-kids",
+      "children": [
+        "kids-clothing-accessories",
+        "kids-bags-backpacks",
+        "baby-shoes-clothes-accessories"
+      ]
+    },
+    {
+      "id": "home-garden",
+      "name": "Home & Garden",
+      "slug": "home-garden",
+      "children": [
+        "home-curtains",
+        "arts-crafts-sew-cut",
+        "party-holiday-supplies",
+        "home-appliances"
+      ]
+    },
+    {
+      "id": "watches-jewelry",
+      "name": "Watches & Jewelry",
+      "slug": "watches-jewelry",
+      "children": [
+        "keychains-pins-more"
+      ]
+    },
+    {
+      "id": "auto-moto",
+      "name": "Auto & Moto",
+      "slug": "auto-moto",
+      "children": [
+        "auto-body-parts",
+        "car-motorcycle-parts-accessories"
+      ]
+    },
+    {
+      "id": "tv-audio-gaming",
+      "name": "TV, Audio & Gaming",
+      "slug": "tv-audio-gaming",
+      "children": [
+        "drones-drone-accessories",
+        "electric-adapters-plugs-sockets",
+        "audio-video-parts",
+        "reptile-amphibian-products",
+        "farm-animal-supplies"
+      ]
+    },
+    {
+      "id": "health-beauty",
+      "name": "Health & Beauty",
+      "slug": "health-beauty",
+      "children": [
+        "personal-hygiene-equipment-accessories",
+        "cosmetics-personal-care",
+        "medical-supplies-wound-dressings"
+      ]
+    },
+    {
+      "id": "clothing",
+      "name": "Clothing",
+      "slug": "clothing",
+      "children": [
+        "mens-coats-jackets",
+        "womens-clothing"
+      ]
+    },
+    {
+      "id": "sports",
+      "name": "Sports & Outdoors",
+      "slug": "sports",
+      "children": [
+        "running-shoes",
+        "fitness-equipment"
+      ]
+    },
+    {
+      "id": "electronics",
+      "name": "Electronics",
+      "slug": "electronics",
+      "children": [
+        "audio-video",
+        "smart-accessories"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+ "layer": "images",
+ "count": 5,
+ "complete": true,
+ "items": [
+  {
+   "path": "apple-touch-icon.png",
+   "url": "https://novaecosystem.live/apple-touch-icon.png"
+  },
+  {
+   "path": "icon-180.png",
+   "url": "https://novaecosystem.live/icon-180.png"
+  },
+  {
+   "path": "icon-192.png",
+   "url": "https://novaecosystem.live/icon-192.png"
+  },
+  {
+   "path": "icon-512.png",
+   "url": "https://novaecosystem.live/icon-512.png"
+  },
+  {
+   "path": "icon.svg",
+   "url": "https://novaecosystem.live/icon.svg"
+  }
+ ]
+}

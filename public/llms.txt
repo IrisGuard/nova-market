@@ -1,0 +1,12 @@
+# Nova Market
+
+Products: 0
+Categories: 10
+Images: 0
+Total items: 10
+
+Full structured catalog: https://novaecosystem.live/ai/index.json
+Summary: https://novaecosystem.live/ai-summary.json
+Sitemap index: https://novaecosystem.live/sitemap-index.xml
+Catalog: https://novaecosystem.live/catalog.json
+RSS: https://novaecosystem.live/feed.xml

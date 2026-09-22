@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nova Market — Everything, one marketplace</title>
+  <meta name="description" content="Nova Market — a curated global marketplace. Discover products across every category, from trusted sources, in one place." />
+  <link rel="canonical" href="https://novamarket.live/" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#4f46e5" />
+  <meta property="og:title" content="Nova Market — Everything, one marketplace" />
+  <meta property="og:description" content="Discover products across every category, from trusted sources, in one place." />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DataCatalog",
+    "name": "Nova Market",
+    "description": "A curated global marketplace.",
+    "url": "https://novamarket.live/",
+    "distribution": [
+      { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://novamarket.live/catalog.json" },
+      { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://novamarket.live/ai-summary.json" },
+      { "@type": "DataDownload", "encodingFormat": "text/plain", "contentUrl": "https://novamarket.live/llms.txt" },
+      { "@type": "DataDownload", "encodingFormat": "application/xml", "contentUrl": "https://novamarket.live/sitemap-index.xml" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- top utility bar -->
+  <div class="utilbar">
+    <div class="container">
+      <div class="brand-note"><b data-brand-name>Nova Market</b> — part of the Nova Ecosystem</div>
+      <div class="right">
+        <a href="/about">About</a>
+        <span class="sep"></span>
+        <a href="/help">Help</a>
+        <span class="sep"></span>
+        <a href="#" data-lang>EN</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- main header -->
+  <header class="site">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <span class="logo">N</span>
+        <span class="name"><em data-brand-name>Nova</em> Market</span>
+      </a>
+      <div class="search">
+        <input id="search-input" type="text" placeholder="Search products, brands, categories…" autocomplete="off" />
+        <span class="kbd">⏎</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- category hub nav (top) -->
+  <nav class="catnav" id="catnav">
+    <div class="container" id="catnav-inner"><a href="/" class="active">Home</a><a href="/category/bags-shoes">Bags &amp; Shoes</a><a href="/category/babies-kids">Babies &amp; Kids</a><a href="/category/home-garden">Home &amp; Garden</a><a href="/category/watches-jewelry">Watches &amp; Jewelry</a><a href="/category/auto-moto">Auto &amp; Moto</a><a href="/category/tv-audio-gaming">TV, Audio &amp; Gaming</a><a href="/category/health-beauty">Health &amp; Beauty</a><a href="/category/clothing">Clothing</a><a href="/category/sports">Sports &amp; Outdoors</a><a href="/category/electronics">Electronics</a></div>
+  </nav>
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>The world's catalog, <em>in one place.</em></h1>
+      <p class="sub">Millions of products across every category — curated, priced fairly, and sourced from trusted partners around the globe.</p>
+      <div class="stats">
+        <div class="stat"><b data-stat-products>0</b><span>products</span></div>
+        <div class="stat"><b data-stat-categories>10</b><span>categories</span></div>
+        <div class="stat"><b data-stat-brands>0</b><span>brands &amp; partners</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- categories grid -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Shop by category</h2>
+        <a class="more" href="/categories">See all →</a>
+      </div>
+      <div class="cat-grid" id="cat-grid">
+    <a class="cat-card" href="/category/bags-shoes">
+      <span class="ic" style="background:var(--bg-soft)">👜</span>
+      <h3>Bags &amp; Shoes</h3>
+      <p>Explore now</p>
+    </a>
+    <a class="cat-card" href="/category/babies-kids">
+      <span class="ic" style="background:var(--bg-soft)">🧸</span>
+      <h3>Babies &amp; Kids</h3>
+      <p>Explore now</p>
+    </a>
+    <a class="cat-card" href="/category/home-garden">
+      <span class="ic" style="background:var(--bg-soft)">🪴</span>
+      <h3>Home &amp; Garden</h3>
+      <p>Explore now</p>
+    </a>
+    <a class="cat-card" href="/category/watches-jewelry">
+      <span class="ic" style="background:var(--bg-soft)">⌚</span>
+      <h3>Watches &amp; Jewelry</h3>
+      <p>Explore now</p>
+    </a>
+    <a class="cat-card" href="/category/auto-moto">
+      <span class="ic" style="background:var(--bg-soft)">🚗</span>
+      <h3>Auto &amp; Moto</h3>
+      <p>Explore now</p>
+    </a>
+    <a class="cat-card" href="/category/tv-audio-gaming">
+      <span class="ic" style="background:var(--bg-soft)">🎧</span>
+      <h3>TV, Audio &amp; Gaming</h3>
+      <p>Explore now</p>
+    </a>
+    <a class="cat-card" href="/category/health-beauty">
+      <span class="ic" style="background:var(--bg-soft)">✨</span>
+      <h3>Health &amp; Beauty</h3>
+      <p>Explore now</p>
+    </a>
+    <a class="cat-card" href="/category/clothing">
+      <span class="ic" style="background:var(--bg-soft)">👕</span>
+      <h3>Clothing</h3>
+      <p>Explore now</p>
+    </a>
+    <a class="cat-card" href="/category/sports">
+      <span class="ic" style="background:var(--bg-soft)">🏃</span>
+      <h3>Sports &amp; Outdoors</h3>
+      <p>Explore now</p>
+    </a>
+    <a class="cat-card" href="/category/electronics">
+      <span class="ic" style="background:var(--bg-soft)">🔌</span>
+      <h3>Electronics</h3>
+      <p>Explore now</p>
+    </a></div>
+    </div>
+  </section>
+
+  <!-- hot products -->
+  <section class="section" style="padding-top:8px">
+    <div class="container">
+      <div class="section-head">
+        <h2>Trending now</h2>
+        <a class="more" href="/products">See all →</a>
+      </div>
+      <div class="prod-grid" id="hot-grid"><div style="grid-column:1/-1;color:var(--muted);padding:40px 0;text-align:center">Products are loading — the catalog opens as soon as our sourcing partners are connected.</div></div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="site">
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="name"><span data-brand-name>Nova</span> Market</div>
+          <p>The curated global marketplace — millions of products from trusted partners, in one place. Part of the Nova Ecosystem.</p>
+        </div>
+        <div>
+          <h4>Shop</h4>
+          <a href="/categories">All categories</a>
+          <a href="/products">All products</a>
+          <a href="/deals">Deals</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="/help">Help center</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/affiliate-disclosure">Affiliate disclosure</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> <span data-brand-name>Nova</span> Market. All rights reserved.</span>
+        <a href="https://novaecosystem.live/" target="_blank" rel="noopener">Nova Ecosystem ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "generated": true,
+  "name": "Nova Market",
+  "description": "Nova Ecosystem marketplace with categories and products.",
+  "base": "https://novaecosystem.live",
+  "counts": {
+    "pages": 1,
+    "images": 5,
+    "videos": 0,
+    "total": 6,
+    "generatedAt": "2026-09-17T17:31:59.855Z"
+  },
+  "layers": {
+    "pages": {
+      "count": 1,
+      "file": "ai/pages.json"
+    },
+    "images": {
+      "count": 5,
+      "file": "ai/images.json"
+    },
+    "videos": {
+      "count": 0,
+      "file": "ai/videos.json"
+    }
+  }
+}

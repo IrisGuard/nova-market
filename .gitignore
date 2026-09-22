@@ -1,0 +1,30 @@
+# Environment / secrets — never commit
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+*.local
+
+# Cloudflare local state (account cache)
+.wrangler/
+
+# Dependencies + build output
+node_modules/
+dist/
+dist-ssr/
+.output/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
