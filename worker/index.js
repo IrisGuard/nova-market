@@ -7,7 +7,7 @@
 
 import { searchAliExpress } from "../src/feed/adapter.mjs";
 
-const SITE = (env) => (env && env.SITE_URL) || "https://novamarket.live";
+const SITE = (env) => (env && env.SITE_URL) || "https://nova-market.broken-rain-2495.workers.dev";
 const NAME = (env) => (env && env.SITE_NAME) || "Nova Market";
 
 const json = (obj, status = 200) =>

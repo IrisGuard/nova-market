@@ -7,8 +7,8 @@ export const BRAND = {
   // line to change when he decides. Internal working name kept neutral.
   name: "Nova Market",
   tagline: "Everything, one marketplace.",
-  domain: "novamarket.live",          // placeholder until Owner picks the domain
-  siteUrl: "https://novamarket.live", // placeholder
+  domain: "nova-market.broken-rain-2495.workers.dev",          // live preview until Owner picks the domain
+  siteUrl: "https://nova-market.broken-rain-2495.workers.dev", // live preview
   support: "support@novaecosystem.live",
 };
 

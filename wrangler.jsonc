@@ -23,7 +23,7 @@
   ],
 
   "vars": {
-    "SITE_URL": "https://novamarket.live",
+    "SITE_URL": "https://nova-market.broken-rain-2495.workers.dev",
     "SITE_NAME": "Nova Market"
   }
 }
