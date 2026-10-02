@@ -1,7 +1,7 @@
 {
   "name": "Nova Market",
   "description": "Curated global marketplace — affiliate-first, China-sourced products (Cloudflare Worker + D1). Under construction: catalog opens when the Owner's affiliate keys land.",
-  "repo": "IrisGuard/nova-forge",
+  "repo": "IrisGuard/nova-market",
   "source": "github",
   "createdAt": "2026-09-14T00:00:00.000Z",
   "updatedAt": "2026-09-17T16:40:00.000Z"

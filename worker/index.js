@@ -281,18 +281,22 @@ async function seoCounts(env) {
   return { products, categories, images: products, total_items: products + categories + products };
 }
 
-async function serveSeo(env, path) {
-  const site = SITE(env);
+async function serveSeo(env, path, site) {
+  // Use the request origin so sitemap/robots/llms URLs are ALWAYS same-domain,
+  // regardless of which hostname actually served the Worker (workers.dev,
+  // pages.dev or a custom domain). A hardcoded SITE_URL pointing at a domain
+  // that is not wired to this Worker produces off-domain/403 sitemap entries.
+  const base = (site || SITE(env)).replace(/\/+$/, "");
   const c = await seoCounts(env);
   const now = new Date().toISOString();
   const xml = (body) => new Response(body, { headers: { "Content-Type": "application/xml; charset=utf-8", "Cache-Control": "public, max-age=3600" } });
   const jsobj = (o) => json(o);
 
-  if (path === "/sitemap-index.xml") {
+  if (path === "/sitemap.xml" || path === "/sitemap-index.xml") {
     const shards = Math.max(1, Math.ceil(c.products / 50000));
     let s = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-    for (let i = 1; i <= shards; i++) s += `  <sitemap><loc>${site}/sitemap-products-${i}.xml</loc></sitemap>\n`;
-    s += `  <sitemap><loc>${site}/sitemap-categories.xml</loc></sitemap>\n  <sitemap><loc>${site}/sitemap-images.xml</loc></sitemap>\n</sitemapindex>`;
+    for (let i = 1; i <= shards; i++) s += `  <sitemap><loc>${base}/sitemap-products-${i}.xml</loc></sitemap>\n`;
+    s += `  <sitemap><loc>${base}/sitemap-categories.xml</loc></sitemap>\n  <sitemap><loc>${base}/sitemap-images.xml</loc></sitemap>\n</sitemapindex>`;
     return xml(s);
   }
   const m = path.match(/^\/sitemap-products-(\d+)\.xml$/);
@@ -302,20 +306,20 @@ async function serveSeo(env, path) {
     const skip = (page - 1) * perPage;
     const prods = await listProducts(env, { limit: perPage, skip });
     return xml(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-      prods.map((p) => `  <url><loc>${site}/product/${esc(p.slug)}</loc><lastmod>${now.slice(0, 10)}</lastmod></url>`).join("\n") + `\n</urlset>`);
+      prods.map((p) => `  <url><loc>${base}/product/${esc(p.slug)}</loc><lastmod>${now.slice(0, 10)}</lastmod></url>`).join("\n") + `\n</urlset>`);
   }
   if (path === "/sitemap-categories.xml") {
     const cats = await listCategories(env);
     return xml(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-      cats.map((x) => `  <url><loc>${site}/category/${esc(x.slug)}</loc></url>`).join("\n") + `\n</urlset>`);
+      cats.map((x) => `  <url><loc>${base}/category/${esc(x.slug)}</loc></url>`).join("\n") + `\n</urlset>`);
   }
   if (path === "/sitemap-images.xml") {
     const prods = await listProducts(env, { limit: 1000, skip: 0 });
     return xml(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n` +
-      prods.filter((p) => p.image).map((p) => `  <url><loc>${site}/product/${esc(p.slug)}</loc><image:image><image:loc>${esc(p.image)}</image:loc><image:title>${esc(p.title)}</image:title></image:image></url>`).join("\n") + `\n</urlset>`);
+      prods.filter((p) => p.image).map((p) => `  <url><loc>${base}/product/${esc(p.slug)}</loc><image:image><image:loc>${esc(p.image)}</image:loc><image:title>${esc(p.title)}</image:title></image:image></url>`).join("\n") + `\n</urlset>`);
   }
   if (path === "/ai-summary.json") return jsobj({ ...c, updatedAt: now });
-  if (path === "/catalog.json") return jsobj({ counts: c, aiShardIndex: `${site}/ai/index.json`, updatedAt: now });
+  if (path === "/catalog.json") return jsobj({ counts: c, aiShardIndex: `${base}/ai/index.json`, updatedAt: now });
   if (path === "/ai/index.json") return jsobj({ counts: c, shardIndex: { products: { count: c.products, shards: ["products-1.json"] }, categories: { count: c.categories, shards: ["categories-1.json"] } }, updatedAt: now });
   if (path === "/ai/products-1.json") {
     const prods = await listProducts(env, { limit: 1000, skip: 0 });
@@ -326,16 +330,16 @@ async function serveSeo(env, path) {
     return jsobj({ count: cats.length, complete: true, items: cats });
   }
   if (path === "/llms.txt") {
-    return new Response(`# ${NAME(env)}\n\nProducts: ${c.products}\nCategories: ${c.categories}\nTotal items: ${c.total_items}\n\nFull structured catalog: ${site}/ai/index.json\nSummary: ${site}/ai-summary.json\nSitemap index: ${site}/sitemap-index.xml\nCatalog: ${site}/catalog.json\n`, { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600" } });
+    return new Response(`# ${NAME(env)}\n\nProducts: ${c.products}\nCategories: ${c.categories}\nTotal items: ${c.total_items}\n\nFull structured catalog: ${base}/ai/index.json\nSummary: ${base}/ai-summary.json\nSitemap index: ${base}/sitemap-index.xml\nCatalog: ${base}/catalog.json\n`, { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600" } });
   }
   if (path === "/feed.xml") {
     const prods = await listProducts(env, { limit: 100, skip: 0 });
-    return xml(`<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>${NAME(env)}</title><link>${site}</link><description>Curated products from trusted global partners.</description>` +
-      prods.map((p) => `<item><title>${esc(p.title)}</title><link>${site}/product/${esc(p.slug)}</link><description>${esc(p.description || "")}</description><guid>${site}/product/${esc(p.slug)}</guid></item>`).join("") + `</channel></rss>`);
+    return xml(`<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>${NAME(env)}</title><link>${base}</link><description>Curated products from trusted global partners.</description>` +
+      prods.map((p) => `<item><title>${esc(p.title)}</title><link>${base}/product/${esc(p.slug)}</link><description>${esc(p.description || "")}</description><guid>${base}/product/${esc(p.slug)}</guid></item>`).join("") + `</channel></rss>`);
   }
   if (path === "/robots.txt") {
     const bots = ["GPTBot", "ChatGPT-User", "Google-Extended", "ClaudeBot", "anthropic-ai", "PerplexityBot", "CCBot", "Bytespider", "cohere-ai"];
-    return new Response(`User-agent: *\nDisallow:\nAllow: /ai/\nAllow: /catalog.json\nAllow: /ai-summary.json\nAllow: /llms.txt\n` + bots.map((b) => `User-agent: ${b}\nAllow: /\n`).join("") + `Sitemap: ${site}/sitemap-index.xml\n`, { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600" } });
+    return new Response(`User-agent: *\nDisallow:\nAllow: /ai/\nAllow: /catalog.json\nAllow: /ai-summary.json\nAllow: /llms.txt\n` + bots.map((b) => `User-agent: ${b}\nAllow: /\n`).join("") + `Sitemap: ${base}/sitemap-index.xml\n`, { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600" } });
   }
   return null;
 }
@@ -348,9 +352,9 @@ export default {
 
     // SEO/AI files are served DYNAMICALLY by the worker (live D1 counts) — never
     // the stale static build artifacts, so counts are always the source of truth.
-    const SEO_PATHS = /^\/(sitemap-index\.xml|sitemap-products-\d+\.xml|sitemap-categories\.xml|sitemap-images\.xml|catalog\.json|ai-summary\.json|llms\.txt|robots\.txt|feed\.xml)$/;
+    const SEO_PATHS = /^\/(sitemap\.xml|sitemap-index\.xml|sitemap-products-\d+\.xml|sitemap-categories\.xml|sitemap-images\.xml|catalog\.json|ai-summary\.json|llms\.txt|robots\.txt|feed\.xml)$/;
     if (SEO_PATHS.test(path)) {
-      const seo = await serveSeo(env, path);
+      const seo = await serveSeo(env, path, url.origin);
       if (seo) return seo;
     }
 
